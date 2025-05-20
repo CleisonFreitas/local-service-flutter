@@ -71,3 +71,5 @@ flutter:
           weight: 700
         - asset: assets/fonts/AncizarSans-Italic.ttf
           style: italic
+  assets:
+    - assets/images/before_login_screen.jpg
