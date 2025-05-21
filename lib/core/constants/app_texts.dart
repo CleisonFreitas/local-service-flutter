@@ -7,7 +7,7 @@ class AppTexts {
   static const TextStyle headingBold = TextStyle(
     fontFamily: 'AncizarSans',
     fontWeight: FontWeight.bold,
-    fontSize: 24,
+    fontSize: 22,
   );
 
   static const TextStyle subtitle1 = TextStyle(

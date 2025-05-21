@@ -3,6 +3,7 @@ import 'package:local_services/core/constants/app_colors.dart';
 import 'package:local_services/core/constants/app_texts.dart';
 
 final ThemeData appTheme = ThemeData(
+  useMaterial3: true,
   primaryColor: AppColors.primary,
   scaffoldBackgroundColor: AppColors.secondary,
   fontFamily: 'AncizarSans',
