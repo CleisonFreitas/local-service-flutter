@@ -33,5 +33,6 @@ extension TextStyleX on TextStyle {
   TextStyle get white => copyWith(color: AppColors.secondary);
   TextStyle get primary => copyWith(color: AppColors.primary);
   TextStyle get secondary => copyWith(color: AppColors.secondary);
+  TextStyle get black => copyWith(color: Color(0x00000000));
   TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
 }
