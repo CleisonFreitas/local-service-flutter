@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_services/core/constants/app_colors.dart';
 import 'package:local_services/core/constants/app_texts.dart';
 import 'package:local_services/shared/components/custom_button.dart';
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: AppTexts.subtitle1.white.copyWith(fontSize: 18),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => context.go('/login'),
                         child: Text(
                           'Sign In',
                           style: AppTexts.subtitle1.copyWith(

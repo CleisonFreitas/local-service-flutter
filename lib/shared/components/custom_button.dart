@@ -34,10 +34,13 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: colors!['background'],
         foregroundColor: colors['text'],
-        surfaceTintColor: Colors.transparent, // This fixes the glassy effect
+        surfaceTintColor: Colors.transparent,
         elevation: 4,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+          side: BorderSide(color: AppColors.primary),
+        ),
       ),
       onPressed: action,
       child: Align(

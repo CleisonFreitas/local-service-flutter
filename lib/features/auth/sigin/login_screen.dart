@@ -4,14 +4,14 @@ import 'package:local_services/core/constants/app_texts.dart';
 import 'package:local_services/shared/components/card_action.dart';
 import 'package:local_services/shared/components/custom_form_field.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignInState extends State<SignIn> {
+class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   @override
