@@ -36,7 +36,7 @@ class CustomButton extends StatelessWidget {
         foregroundColor: colors['text'],
         surfaceTintColor: Colors.transparent,
         elevation: 4,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
           side: BorderSide(color: AppColors.primary),
@@ -50,10 +50,13 @@ class CustomButton extends StatelessWidget {
           crossAxisAlignment: WrapCrossAlignment.center,
           spacing: 10,
           children: [
-            if (icon != null) ...[Icon(icon, color: colors['text'], size: 17)],
+            if (icon != null) ...[Icon(icon, color: colors['text'], size: 22)],
             Text(
               text,
-              style: AppTexts.headingBold.copyWith(color: colors['text']),
+              style: AppTexts.headingBold.copyWith(
+                color: colors['text'],
+                fontSize: 16,
+              ),
             ),
           ],
         ),

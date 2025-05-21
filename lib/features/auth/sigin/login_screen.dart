@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
                       'OR',
-                      style: AppTexts.captionItalic.copyWith(
+                      style: AppTexts.subtitle1.copyWith(
                         color: AppColors.secondary,
                       ),
                     ),
