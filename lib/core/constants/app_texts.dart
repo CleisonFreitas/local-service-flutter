@@ -27,12 +27,6 @@ class AppTexts {
     fontStyle: FontStyle.italic,
     fontSize: 12,
   );
-
-  static const TextStyle title = TextStyle(
-    fontFamily: 'AncizarSans',
-    fontWeight: FontWeight.bold,
-    fontSize: 22,
-  );
 }
 
 extension TextStyleX on TextStyle {
