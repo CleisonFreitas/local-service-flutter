@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_services/core/constants/app_colors.dart';
 import 'package:local_services/core/constants/app_texts.dart';
 import 'package:local_services/shared/components/custom_button.dart';
@@ -71,9 +72,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   prefixIcon: Icons.lock,
                   isSecret: true,
                 ),
-                Text(
-                  'By signing up you agree to our Term of use and privacy notice',
-                  style: AppTexts.subtitle1,
+                Wrap(
+                  direction: Axis.horizontal,
+                  spacing: 2,
+                  children: <Widget>[
+                    Text(
+                      'By signing up you agree to our',
+                      style: AppTexts.subtitle1,
+                    ),
+                    InkWell(
+                      child: Text(
+                        'Term of use and privacy',
+                        style: AppTexts.subtitle1.primary,
+                      ),
+                      onTap: () => print('Acessando termos de serviço'),
+                    ),
+                    Text('notice', style: AppTexts.subtitle1),
+                  ],
                 ),
                 const SizedBox(height: 10),
                 CustomButton(
@@ -133,11 +148,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 spacing: 2,
                 children: <Widget>[
                   Text('Already have an account?', style: AppTexts.subtitle1),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Sign In',
-                      style: AppTexts.subtitle1.primary,
+                  InkWell(
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Sign In',
+                        style: AppTexts.subtitle1.primary,
+                      ),
                     ),
+                    onTap: () => GoRouter.of(context).go('/login'),
                   ),
                 ],
               ),
