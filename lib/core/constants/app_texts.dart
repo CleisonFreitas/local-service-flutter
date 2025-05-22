@@ -5,27 +5,21 @@ class AppTexts {
   const AppTexts._();
 
   static const TextStyle headingBold = TextStyle(
-    fontFamily: 'AncizarSans',
+    fontFamily: 'Manrope',
     fontWeight: FontWeight.bold,
     fontSize: 22,
   );
 
   static const TextStyle subtitle1 = TextStyle(
-    fontFamily: 'AncizarSans',
+    fontFamily: 'Manrope',
     fontWeight: FontWeight.normal,
     fontSize: 14,
   );
 
   static const TextStyle subtitle2 = TextStyle(
-    fontFamily: 'AncizarSans',
+    fontFamily: 'Manrope',
     fontWeight: FontWeight.normal,
     fontSize: 16,
-  );
-
-  static const TextStyle captionItalic = TextStyle(
-    fontFamily: 'AncizarSans',
-    fontStyle: FontStyle.italic,
-    fontSize: 12,
   );
 }
 

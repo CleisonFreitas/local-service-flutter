@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_services/core/constants/app_colors.dart';
+import 'package:local_services/core/constants/app_texts.dart';
 
 class CustomFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -50,45 +51,53 @@ class _CustomFormFieldState extends State<CustomFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: widget.controller,
-      autofocus: widget.autoFocus == true,
-      style: const TextStyle(
-        height: 2,
-        fontSize: 18,
-        color: AppColors.secondary,
-      ),
-      obscureText: _isHidden,
-      keyboardType: widget.keyboardType,
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: AppColors.primary,
-        labelText: widget.label,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        labelStyle: const TextStyle(color: AppColors.secondary),
-        prefixIcon:
-            widget.prefixIcon != null
-                ? Icon(widget.prefixIcon, color: AppColors.secondary)
-                : null,
-        suffixIcon:
-            widget.suffixIcon != null || widget.isSecret == true
-                ? IconButton(
-                  onPressed: widget.function ?? _changeVisibility,
-                  icon: Icon(widget.suffixIcon ?? _suffixIconPassword),
-                  color: AppColors.secondary,
-                )
-                : null,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.secondary),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.secondary),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.secondary),
+    return SizedBox(
+      height: 54,
+      child: TextField(
+        maxLength: 255,
+        controller: widget.controller,
+        autofocus: widget.autoFocus == true,
+        style: AppTexts.subtitle1.copyWith(fontWeight: FontWeight.bold),
+        obscureText: _isHidden,
+        keyboardType: widget.keyboardType,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.all(12),
+          counterText: "",
+          hintText: widget.label,
+          hintStyle: AppTexts.subtitle1.copyWith(color: AppColors.inputText),
+          filled: true,
+          fillColor: AppColors.input,
+          prefixIcon:
+              widget.prefixIcon != null
+                  ? Icon(
+                    widget.prefixIcon,
+                    color: AppColors.inputText,
+                    size: 18,
+                  )
+                  : null,
+          suffixIcon:
+              widget.suffixIcon != null || widget.isSecret == true
+                  ? IconButton(
+                    onPressed: widget.function ?? _changeVisibility,
+                    icon: Icon(
+                      widget.suffixIcon ?? _suffixIconPassword,
+                      size: 18,
+                    ),
+                    color: AppColors.inputText,
+                  )
+                  : null,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: const BorderSide(color: AppColors.secondary),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: const BorderSide(color: AppColors.secondary),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: const BorderSide(color: AppColors.secondary),
+          ),
         ),
       ),
     );
