@@ -67,7 +67,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
           obscureText: _isHidden,
           keyboardType: widget.keyboardType,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(12),
+            contentPadding: EdgeInsets.all(22),
             counterText: "",
             hintText: widget.label,
             hintStyle: AppTexts.subtitle1.copyWith(color: AppColors.inputText),
