@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(
-                      onPressed: () => print('Clicou em esqueceu a senha'),
+                      onPressed: () => context.go('/recovery-password-email'),
                       child: Text(
                         'Forgot password?',
                         style: AppTexts.subtitle1.primary,
