@@ -8,6 +8,8 @@ class AppColors {
   static const Color orange = Color(0xFFF98600);
   static const Color input = Color(0xFFF0F3F6);
   static const Color inputText = Color(0xFFADB3BC);
+  static const Color inativeText = Color.fromARGB(255, 179, 180, 181);
+  static const Color error = Color.fromARGB(249, 203, 38, 38);
   static const Gradient gradient = LinearGradient(
     colors: <Color>[primary, secondary],
   );
