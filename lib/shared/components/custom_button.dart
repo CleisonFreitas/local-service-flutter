@@ -8,6 +8,7 @@ class CustomButton extends StatelessWidget {
   final ButtonEnum buttonEnum;
   final VoidCallback? action;
   final IconData? icon;
+  final bool? isLoading;
 
   const CustomButton({
     super.key,
@@ -15,6 +16,7 @@ class CustomButton extends StatelessWidget {
     this.action,
     this.icon,
     required this.buttonEnum,
+    this.isLoading,
   });
 
   @override
@@ -44,22 +46,30 @@ class CustomButton extends StatelessWidget {
       ),
       onPressed: action,
       child: Align(
-        child: Wrap(
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.center,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 10,
-          children: [
-            if (icon != null) ...[Icon(icon, color: colors['text'], size: 22)],
-            Text(
-              text,
-              style: AppTexts.headingBold.copyWith(
-                color: colors['text'],
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
+        child:
+            isLoading == true
+                ? CircularProgressIndicator(
+                  color: AppColors.secondary,
+                  constraints: BoxConstraints.tight(Size(23, 23)),
+                )
+                : Wrap(
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 10,
+                  children: [
+                    if (icon != null) ...[
+                      Icon(icon, color: colors['text'], size: 22),
+                    ],
+                    Text(
+                      text,
+                      style: AppTexts.headingBold.copyWith(
+                        color: colors['text'],
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
       ),
     );
   }

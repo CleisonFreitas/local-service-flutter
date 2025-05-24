@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:local_services/features/auth/identification/identification_screen.dart';
 import 'package:local_services/features/auth/password_recovery/email_otp_screen.dart';
 import 'package:local_services/features/auth/password_recovery/email_recovery_screen.dart';
+import 'package:local_services/features/auth/password_recovery/new_password_screen.dart';
 import 'package:local_services/features/auth/sigin/home_screen.dart';
 import 'package:local_services/features/auth/sigin/login_screen.dart';
 import 'package:local_services/features/auth/signup/signup_screen.dart';
@@ -24,6 +25,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/recovery-otp-email',
       builder: (context, state) => const EmailOtpScreen(),
+    ),
+    GoRoute(
+      path: '/recovery-new-password',
+      builder: (context, state) => const NewPasswordScreen(),
     ),
     GoRoute(
       path: '/register',
