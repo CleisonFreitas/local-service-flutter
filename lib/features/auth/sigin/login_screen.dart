@@ -23,7 +23,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ContentContainer(
-        child: Column(
+        child: Flex(
+          direction: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +36,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   title:
                       'Glad to meet you again!, please login to use the app.',
                 ),
-                const SizedBox(height: 102),
+              ],
+            ),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 10,
+              children: <Widget>[
                 CustomFormField(
                   controller: _emailController,
                   label: 'Email',
@@ -57,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 117),
+
             Column(
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.center,

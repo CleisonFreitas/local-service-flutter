@@ -27,6 +27,10 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
   final _fourthDigitController = TextEditingController();
   late ValueNotifier<int> _timeResendingNotifier;
   late ValueNotifier<bool> _isLoadingNotifier;
+  final _firstFocusNode = FocusNode();
+  final _secondFocusNode = FocusNode();
+  final _thirdFocusNode = FocusNode();
+  final _fourFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -47,7 +51,7 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
   }
 
   void _resendCode() {
-    _timeResendingNotifier.value = 170;
+    _timeResendingNotifier.value = 170; // 2:50 - the period to a new code.
     CustomSnackBar.showSuccess(context, 'Code resent');
   }
 
@@ -66,6 +70,12 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
     });
   }
 
+  void _changeFocusNode(String value, FocusNode nextFocusNode) {
+    if (value.isNotEmpty) {
+      FocusScope.of(context).requestFocus(nextFocusNode);
+    }
+  }
+
   @override
   void dispose() {
     _firstDigitController.dispose();
@@ -74,13 +84,17 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
     _fourthDigitController.dispose();
     _timeResendingNotifier.dispose();
     _isLoadingNotifier.dispose();
+    _firstFocusNode.dispose();
+    _secondFocusNode.dispose();
+    _thirdFocusNode.dispose();
+    _fourFocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final screenWidgetMediaQuery = MediaQuery.of(context).size.width;
-    // 4 é a quantidade de inputs e 12 do  padding do container + 10 spacing.
+    // 4 for each input and 28 for rest of space.
     final otpFieldWidth = screenWidgetMediaQuery / 4 - 28;
 
     return Scaffold(
@@ -105,6 +119,10 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                     maxLength: 1,
                     isOneDigit: true,
                     autoFocus: true,
+                    keyboardType: TextInputType.number,
+                    focusNode: _firstFocusNode,
+                    onChanged:
+                        (value) => _changeFocusNode(value, _secondFocusNode),
                   ),
                 ),
                 SizedBox(
@@ -115,6 +133,10 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                     borderRadius: 10,
                     maxLength: 1,
                     isOneDigit: true,
+                    keyboardType: TextInputType.number,
+                    focusNode: _secondFocusNode,
+                    onChanged:
+                        (value) => _changeFocusNode(value, _thirdFocusNode),
                   ),
                 ),
                 SizedBox(
@@ -125,6 +147,10 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                     borderRadius: 10,
                     maxLength: 1,
                     isOneDigit: true,
+                    keyboardType: TextInputType.number,
+                    focusNode: _thirdFocusNode,
+                    onChanged:
+                        (value) => _changeFocusNode(value, _fourFocusNode),
                   ),
                 ),
                 SizedBox(
@@ -135,6 +161,8 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
                     borderRadius: 10,
                     maxLength: 1,
                     isOneDigit: true,
+                    keyboardType: TextInputType.number,
+                    focusNode: _fourFocusNode,
                   ),
                 ),
               ],

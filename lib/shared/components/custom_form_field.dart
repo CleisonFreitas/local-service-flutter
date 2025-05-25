@@ -16,6 +16,7 @@ class CustomFormField extends StatefulWidget {
   final bool? isOneDigit;
   final FocusNode? focusNode;
   final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onChanged;
 
   const CustomFormField({
     super.key,
@@ -32,6 +33,7 @@ class CustomFormField extends StatefulWidget {
     this.isOneDigit = false,
     this.focusNode,
     this.validator,
+    this.onChanged,
   });
 
   @override
@@ -43,6 +45,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
   late IconData _suffixIconPassword;
   late bool _hasFocus;
   late FocusNode _focusNode;
+  ValueChanged<String>? get _onChangedEvent => widget.onChanged;
 
   @override
   void initState() {
@@ -83,6 +86,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
 
     return TextFormField(
       focusNode: _focusNode,
+      onChanged: _onChangedEvent,
       controller: widget.controller,
       maxLength: widget.maxLength!,
       autofocus: widget.autoFocus == true,
