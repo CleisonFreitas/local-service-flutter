@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:local_services/core/constants/app_colors.dart';
 import 'package:local_services/core/constants/app_texts.dart';
 import 'package:local_services/shared/components/custom_button.dart';
+import 'package:local_services/shared/components/custom_snackbar.dart';
 import 'package:local_services/shared/enums/button_enum.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,14 +53,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: 'Join with Google',
                     buttonEnum: ButtonEnum.primary,
                     icon: Icons.search,
-                    action: () => print('Login with Google'),
+                    action:
+                        () => CustomSnackBar.showInfo(
+                          context,
+                          'Em desenvolvimento',
+                        ),
                   ),
                   const SizedBox(height: 10),
                   CustomButton(
                     text: 'Join with Email',
                     buttonEnum: ButtonEnum.secondary,
                     icon: Icons.email,
-                    action: () => print('Login with Email'),
+                    action:
+                        () => CustomSnackBar.showInfo(
+                          context,
+                          'Em desenvolvimento',
+                        ),
                   ),
                   const SizedBox(height: 16),
                   Wrap(

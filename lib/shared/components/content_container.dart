@@ -7,10 +7,16 @@ class ContentContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-      decoration: BoxDecoration(color: AppColors.secondary),
-      child: child,
+    final screenSize = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Container(
+        alignment: Alignment.center,
+        width: screenSize.width,
+        height: screenSize.height,
+        padding: EdgeInsets.only(left: 16, right: 22, top: 35, bottom: 10),
+        decoration: BoxDecoration(color: AppColors.secondary),
+        child: child,
+      ),
     );
   }
 }

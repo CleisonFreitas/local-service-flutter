@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:local_services/core/constants/app_colors.dart';
-import 'package:local_services/core/constants/app_texts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,8 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
       Future.delayed(Duration(seconds: 5), () {
         if (!mounted) return;
-        //GoRouter.of(context).go('/home');
-        GoRouter.of(context).go('/register');
+        GoRouter.of(context).go('/home');
       });
     });
     super.initState();
@@ -49,14 +47,28 @@ class _SplashScreenState extends State<SplashScreen> {
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text(
-                      'Local Service',
-                      style: AppTexts.headingBold.bold.white,
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                          width: 140, // slightly larger than the image
+                          height: 140,
+                          child:
+                              isLoading
+                                  ? CircularProgressIndicator(
+                                    color: AppColors.secondary,
+                                    strokeWidth: 4,
+                                  )
+                                  : const SizedBox.shrink(),
+                        ),
+                        Image.asset(
+                          'assets/images/WuP.png',
+                          width: 120,
+                          height: 120,
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 30),
-                    isLoading
-                        ? CircularProgressIndicator(color: AppColors.secondary)
-                        : const SizedBox.shrink(),
                   ],
                 );
               },

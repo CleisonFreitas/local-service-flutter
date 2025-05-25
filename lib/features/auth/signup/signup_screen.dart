@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 CustomButton(
                   text: "Join now",
                   buttonEnum: ButtonEnum.secondary,
-                  action: () {},
+                  action: () => context.go('/identification'),
                 ),
                 const SizedBox(height: 10),
                 Padding(
@@ -136,7 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             CustomButton(
               text: "Join with Google",
               buttonEnum: ButtonEnum.primary,
-              action: () {},
+              action: () => context.go('/identification'),
               icon: Icons.account_circle_sharp,
             ),
             const SizedBox(height: 22),

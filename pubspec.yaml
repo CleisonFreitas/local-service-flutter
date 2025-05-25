@@ -71,3 +71,5 @@ flutter:
           weight: 700
   assets:
     - assets/images/before_login_screen.jpg
+    - assets/images/WuP.png
+    - assets/images/wup_logo.png

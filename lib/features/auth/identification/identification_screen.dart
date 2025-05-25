@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_services/core/constants/app_colors.dart';
 import 'package:local_services/core/constants/app_texts.dart';
 import 'package:local_services/shared/components/custom_button.dart';
@@ -17,6 +18,13 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.secondary,
+        leading: IconButton(
+          onPressed: () => GoRouter.of(context).go('/register'),
+          icon: Icon(Icons.arrow_back),
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         decoration: BoxDecoration(color: AppColors.secondary),
