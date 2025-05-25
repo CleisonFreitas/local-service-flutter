@@ -15,6 +15,7 @@ class CustomFormField extends StatefulWidget {
   final int? maxLength;
   final bool? isOneDigit;
   final FocusNode? focusNode;
+  final FormFieldValidator<String>? validator;
 
   const CustomFormField({
     super.key,
@@ -30,6 +31,7 @@ class CustomFormField extends StatefulWidget {
     this.maxLength = 255,
     this.isOneDigit = false,
     this.focusNode,
+    this.validator,
   });
 
   @override
@@ -79,61 +81,56 @@ class _CustomFormFieldState extends State<CustomFormField> {
   Widget build(BuildContext context) {
     final bool isActive = _hasFocus;
 
-    return SizedBox(
-      height: 54,
-      child: TextField(
-        focusNode: _focusNode,
-        controller: widget.controller,
-        maxLength: widget.maxLength!,
-        autofocus: widget.autoFocus == true,
-        obscureText: _isHidden,
-        keyboardType: widget.keyboardType,
-        textAlign:
-            widget.isOneDigit == true ? TextAlign.center : TextAlign.start,
-        style: AppTexts.subtitle1.copyWith(
-          fontWeight: FontWeight.bold,
-          fontSize: widget.isOneDigit == true ? 22 : 14,
-        ),
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(5),
-          counterText: "",
-          hintText: widget.label,
-          hintStyle: AppTexts.subtitle1.copyWith(color: AppColors.inputText),
-          filled: true,
-          fillColor: isActive ? AppColors.secondary : AppColors.input,
-          prefixIcon:
-              widget.prefixIcon != null
-                  ? Icon(
-                    widget.prefixIcon,
-                    color: AppColors.inputText,
+    return TextFormField(
+      focusNode: _focusNode,
+      controller: widget.controller,
+      maxLength: widget.maxLength!,
+      autofocus: widget.autoFocus == true,
+      obscureText: _isHidden,
+      keyboardType: widget.keyboardType,
+      textAlign: widget.isOneDigit == true ? TextAlign.center : TextAlign.start,
+      style: AppTexts.subtitle1.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: widget.isOneDigit == true ? 22 : 14,
+      ),
+      validator: widget.validator,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.all(widget.isOneDigit == true ? 5 : 22),
+        counterText: "",
+        hintText: widget.label,
+        hintStyle: AppTexts.subtitle1.copyWith(color: AppColors.inputText),
+        helperText: '',
+        errorStyle: AppTexts.subtitle1.copyWith(height: 2),
+        filled: true,
+        fillColor: isActive ? AppColors.secondary : AppColors.input,
+        prefixIcon:
+            widget.prefixIcon != null
+                ? Icon(widget.prefixIcon, color: AppColors.inputText, size: 18)
+                : null,
+        suffixIcon:
+            (widget.suffixIcon != null || widget.isSecret == true)
+                ? IconButton(
+                  onPressed: widget.function ?? _changeVisibility,
+                  icon: Icon(
+                    widget.suffixIcon ?? _suffixIconPassword,
                     size: 18,
-                  )
-                  : null,
-          suffixIcon:
-              (widget.suffixIcon != null || widget.isSecret == true)
-                  ? IconButton(
-                    onPressed: widget.function ?? _changeVisibility,
-                    icon: Icon(
-                      widget.suffixIcon ?? _suffixIconPassword,
-                      size: 18,
-                    ),
-                    color: AppColors.inputText,
-                  )
-                  : null,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius!),
-            borderSide: const BorderSide(color: AppColors.secondary),
+                  ),
+                  color: AppColors.inputText,
+                )
+                : null,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius!),
+          borderSide: const BorderSide(color: AppColors.secondary),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius!),
+          borderSide: BorderSide(
+            color: isActive ? AppColors.primary : AppColors.secondary,
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius!),
-            borderSide: BorderSide(
-              color: isActive ? AppColors.primary : AppColors.secondary,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius!),
-            borderSide: BorderSide(color: AppColors.primary),
-          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius!),
+          borderSide: BorderSide(color: AppColors.primary),
         ),
       ),
     );

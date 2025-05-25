@@ -76,16 +76,14 @@ class _EmailRecoveryScreenState extends State<EmailRecoveryScreen> {
                               ? TextInputType.phone
                               : TextInputType.emailAddress,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 2),
                     Align(
                       alignment: Alignment.topRight,
                       child: InkWell(
                         onTap: _changeRecoveryMethod,
                         child: Text(
                           state ? 'Use email address?' : 'Use phone number?',
-                          style: AppTexts.subtitle2.primary.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: AppTexts.subtitle1.primary,
                         ),
                       ),
                     ),

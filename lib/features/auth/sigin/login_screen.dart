@@ -25,125 +25,113 @@ class _LoginScreenState extends State<LoginScreen> {
       body: ContentContainer(
         child: Column(
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  CustomTitle(title: 'Welcome back,'),
-                  CustomSubtitle(
-                    title:
-                        'Glad to meet you again!, please login to use the app.',
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                CustomTitle(title: 'Welcome back,'),
+                CustomSubtitle(
+                  title:
+                      'Glad to meet you again!, please login to use the app.',
+                ),
+                const SizedBox(height: 102),
+                CustomFormField(
+                  controller: _emailController,
+                  label: 'Email',
+                  prefixIcon: Icons.mail,
+                ),
+                CustomFormField(
+                  controller: _passwordController,
+                  label: 'Password',
+                  prefixIcon: Icons.lock,
+                  isSecret: true,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                    onPressed: () => context.go('/recovery-password-email'),
+                    child: Text(
+                      'Forgot password?',
+                      style: AppTexts.subtitle1.primary,
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Column(
-                spacing: 10,
-                children: <Widget>[
-                  CustomFormField(
-                    controller: _emailController,
-                    label: 'Email',
-                    prefixIcon: Icons.mail,
-                  ),
-                  CustomFormField(
-                    controller: _passwordController,
-                    label: 'Password',
-                    prefixIcon: Icons.lock,
-                    isSecret: true,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: TextButton(
-                      onPressed: () => context.go('/recovery-password-email'),
-                      child: Text(
-                        'Forgot password?',
-                        style: AppTexts.subtitle1.primary,
+            const SizedBox(height: 117),
+            Column(
+              spacing: 5,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CustomButton(
+                  text: "Sign In",
+                  buttonEnum: ButtonEnum.secondary,
+                  action: () {},
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Expanded(
+                        child: SizedBox(
+                          child: Divider(
+                            color: AppColors.primary,
+                            thickness: 1,
+                          ),
+                        ),
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'OR',
+                          style: AppTexts.subtitle1.copyWith(
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          child: Divider(
+                            color: AppColors.primary,
+                            thickness: 1,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                spacing: 5,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CustomButton(
-                    text: "Sign In",
-                    buttonEnum: ButtonEnum.secondary,
-                    action: () {},
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Expanded(
-                          child: SizedBox(
-                            child: Divider(
-                              color: AppColors.primary,
-                              thickness: 1,
+                ),
+                const SizedBox(height: 10),
+                CustomButton(
+                  text: "Sign In with Google",
+                  buttonEnum: ButtonEnum.primary,
+                  action: () {},
+                  icon: Icons.account_circle_sharp,
+                ),
+                const SizedBox(height: 22),
+                Align(
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 2,
+                    children: <Widget>[
+                      Text("Don't have an account?", style: AppTexts.subtitle1),
+                      InkWell(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Join Now',
+                            style: AppTexts.subtitle1.primary.copyWith(
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            'OR',
-                            style: AppTexts.subtitle1.copyWith(
-                              color: AppColors.primary,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: SizedBox(
-                            child: Divider(
-                              color: AppColors.primary,
-                              thickness: 1,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                        onTap: () => GoRouter.of(context).go('/register'),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 10),
-                  CustomButton(
-                    text: "Sign In with Google",
-                    buttonEnum: ButtonEnum.primary,
-                    action: () {},
-                    icon: Icons.account_circle_sharp,
-                  ),
-                  const SizedBox(height: 22),
-                  Align(
-                    child: Flex(
-                      direction: Axis.horizontal,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 2,
-                      children: <Widget>[
-                        Text(
-                          "Don't have an account?",
-                          style: AppTexts.subtitle1,
-                        ),
-                        InkWell(
-                          child: RichText(
-                            text: TextSpan(
-                              text: 'Join Now',
-                              style: AppTexts.subtitle1.primary.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          onTap: () => GoRouter.of(context).go('/register'),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
