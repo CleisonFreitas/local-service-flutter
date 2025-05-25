@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:local_services/core/constants/app_colors.dart';
 import 'package:local_services/core/constants/app_texts.dart';
+import 'package:local_services/shared/components/content_container.dart';
 import 'package:local_services/shared/components/custom_button.dart';
 import 'package:local_services/shared/components/custom_form_field.dart';
 import 'package:local_services/shared/components/custom_subtitle.dart';
@@ -33,9 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-        decoration: BoxDecoration(color: AppColors.secondary),
+      body: ContentContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -47,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(height: 40),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 10,
+              spacing: 2,
               children: <Widget>[
                 CustomFormField(
                   controller: _nameController,
