@@ -64,7 +64,7 @@ class _EmailOtpScreenState extends State<EmailOtpScreen> {
 
         Future.delayed(Duration(seconds: 2), () {
           if (!mounted) return;
-          context.go('/recovery-new-password');
+          context.go('/auth/password-recovery/recovery-new-password');
         });
       }
     });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_services/shared/components/content_container.dart';
 import 'package:local_services/shared/components/custom_button.dart';
 import 'package:local_services/shared/components/custom_form_field.dart';
@@ -45,6 +46,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
       CustomSnackBar.showSuccess(context, 'Password updated with successful');
       _isLoadingNotifier.value = false;
+
+      GoRouter.of(context).go('/services/profile');
     });
   }
 
@@ -111,7 +114,6 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
       body: ContentContainer(
         child: Form(
           key: _formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

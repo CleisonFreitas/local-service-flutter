@@ -17,6 +17,7 @@ class CustomFormField extends StatefulWidget {
   final FocusNode? focusNode;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
+  final int? minLines;
 
   const CustomFormField({
     super.key,
@@ -34,6 +35,7 @@ class CustomFormField extends StatefulWidget {
     this.focusNode,
     this.validator,
     this.onChanged,
+    this.minLines,
   });
 
   @override
@@ -89,6 +91,8 @@ class _CustomFormFieldState extends State<CustomFormField> {
       onChanged: _onChangedEvent,
       controller: widget.controller,
       maxLength: widget.maxLength!,
+      minLines: widget.minLines ?? 1,
+      maxLines: _isHidden ? 1 : null,
       autofocus: widget.autoFocus == true,
       obscureText: _isHidden,
       keyboardType: widget.keyboardType,

@@ -21,7 +21,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.secondary,
         leading: IconButton(
-          onPressed: () => GoRouter.of(context).go('/register'),
+          onPressed: () => GoRouter.of(context).go('/auth/sign-up/register'),
           icon: Icon(Icons.arrow_back),
         ),
       ),
@@ -37,10 +37,9 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTitle(title: 'Perfil de usuário'),
+                  CustomTitle(title: 'User profile'),
                   CustomSubtitle(
-                    title:
-                        'Escolha um perfil que se adeque ao que você está procurando',
+                    title: 'Choose the option the better fit on you',
                   ),
                 ],
               ),
@@ -53,19 +52,19 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                 spacing: 10,
                 children: <Widget>[
                   CustomButton(
-                    text: 'Desejo contratar serviços',
+                    text: "Are you a contractor?",
                     buttonEnum: ButtonEnum.secondary,
                     action: () {},
                   ),
                   Text(
-                    'Ou',
+                    'Or',
                     style: AppTexts.subtitle2.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   CustomButton(
-                    text: 'Desejo oferecer serviços',
+                    text: 'Do you want to work?',
                     buttonEnum: ButtonEnum.primary,
                     action: () {},
                   ),

@@ -56,7 +56,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: TextButton(
-                    onPressed: () => context.go('/recovery-password-email'),
+                    onPressed:
+                        () => context.go(
+                          '/auth/password-recovery/recovery-password-email',
+                        ),
                     child: Text(
                       'Forgot password?',
                       style: AppTexts.subtitle1.primary,
@@ -134,7 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        onTap: () => GoRouter.of(context).go('/register'),
+                        onTap:
+                            () => GoRouter.of(
+                              context,
+                            ).go('/auth/sign-up/register'),
                       ),
                     ],
                   ),

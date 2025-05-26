@@ -154,7 +154,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: AppTexts.subtitle1.primary,
                       ),
                     ),
-                    onTap: () => GoRouter.of(context).go('/login'),
+                    onTap: () => GoRouter.of(context).go('/auth/sign-in/login'),
                   ),
                 ],
               ),
