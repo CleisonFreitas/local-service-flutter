@@ -17,9 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       _isScreenLoading.value = true;
 
-      Future.delayed(Duration(seconds: 5), () {
+      Future.delayed(Duration(seconds: 3), () {
         if (!mounted) return;
-        GoRouter.of(context).go('/home');
+        GoRouter.of(context).go('/auth/sign-in/home');
       });
     });
     super.initState();

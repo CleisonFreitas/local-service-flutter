@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: AppTexts.subtitle1.white.copyWith(fontSize: 18),
                       ),
                       TextButton(
-                        onPressed: () => context.go('/login'),
+                        onPressed: () => context.go('/auth/sign-in/login'),
                         child: Text(
                           'Sign In',
                           style: AppTexts.subtitle1.copyWith(

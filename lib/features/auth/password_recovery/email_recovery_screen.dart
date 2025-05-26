@@ -91,7 +91,10 @@ class _EmailRecoveryScreenState extends State<EmailRecoveryScreen> {
                     CustomButton(
                       text: 'Send Code',
                       buttonEnum: ButtonEnum.secondary,
-                      action: () => context.go('/recovery-otp-email'),
+                      action:
+                          () => context.go(
+                            '/auth/password-recovery/recovery-otp-email',
+                          ),
                     ),
                   ],
                 );
