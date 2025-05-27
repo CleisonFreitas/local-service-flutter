@@ -6,6 +6,7 @@ import 'package:local_services/features/auth/identification/identification_scree
 import 'package:local_services/features/auth/password_recovery/email_otp_screen.dart';
 import 'package:local_services/features/auth/password_recovery/email_recovery_screen.dart';
 import 'package:local_services/features/auth/password_recovery/new_password_screen.dart';
+import 'package:local_services/features/auth/signin/bloc/logic/login_form_bloc.dart';
 import 'package:local_services/features/auth/signin/home_screen.dart';
 import 'package:local_services/features/auth/signin/login_screen.dart';
 import 'package:local_services/features/auth/signup/signup_screen.dart';
@@ -28,7 +29,13 @@ final routerConfig = GoRouter(
     ),
     GoRoute(
       path: '/auth/sign-in/login',
-      builder: (context, state) => const LoginScreen(),
+      builder:
+          (context, state) => BlocProvider(
+            create: (_) => LoginFormBloc(),
+            child: GenericBlocListener<LoginFormBloc, BaseState>(
+              child: const LoginScreen(),
+            ),
+          ),
     ),
     GoRoute(
       path: '/auth/password-recovery/recovery-password-email',
