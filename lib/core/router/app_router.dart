@@ -10,6 +10,7 @@ import 'package:local_services/features/auth/signin/home_screen.dart';
 import 'package:local_services/features/auth/signin/login_screen.dart';
 import 'package:local_services/features/auth/signup/signup_screen.dart';
 import 'package:local_services/features/auth/splash/splash_screen.dart';
+import 'package:local_services/features/booking/customer_booking_screen.dart';
 import 'package:local_services/features/services/bloc/logic/profile_form_bloc.dart';
 import 'package:local_services/features/services/profile/profile_screen.dart';
 
@@ -44,6 +45,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/auth/sign-up/register',
       builder: (context, state) => const SignUpScreen(),
+    ),
+    GoRoute(
+      path: '/booking/customer-booking',
+      builder: (context, state) => const CustomerBookingScreen(),
     ),
     GoRoute(
       path: '/services/profile',

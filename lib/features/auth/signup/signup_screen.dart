@@ -71,29 +71,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   prefixIcon: Icons.lock,
                   isSecret: true,
                 ),
-                Wrap(
-                  direction: Axis.horizontal,
-                  spacing: 2,
-                  children: <Widget>[
-                    Text(
-                      'By signing up you agree to our',
-                      style: AppTexts.subtitle1,
-                    ),
-                    InkWell(
-                      child: Text(
-                        'Term of use and privacy',
-                        style: AppTexts.subtitle1.primary,
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    spacing: 2,
+                    children: <Widget>[
+                      Text(
+                        'By signing up you agree to our',
+                        style: AppTexts.subtitle1,
                       ),
-                      onTap: () => print('Acessando termos de serviço'),
-                    ),
-                    Text('notice', style: AppTexts.subtitle1),
-                  ],
+                      InkWell(
+                        child: Text(
+                          'Term of use and privacy',
+                          style: AppTexts.subtitle1.primary,
+                        ),
+                        onTap: () => print('Acessando termos de serviço'),
+                      ),
+                      Text('notice', style: AppTexts.subtitle1),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10),
                 CustomButton(
                   text: "Join now",
                   buttonEnum: ButtonEnum.secondary,
-                  action: () => context.go('/identification'),
+                  action: () => context.go('/auth/identification'),
                 ),
                 const SizedBox(height: 10),
                 Padding(

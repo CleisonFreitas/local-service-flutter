@@ -39,7 +39,7 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                 children: [
                   CustomTitle(title: 'User profile'),
                   CustomSubtitle(
-                    title: 'Choose the option the better fit on you',
+                    title: 'Choose the option that better fit to you',
                   ),
                 ],
               ),
@@ -52,9 +52,9 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                 spacing: 10,
                 children: <Widget>[
                   CustomButton(
-                    text: "Are you a contractor?",
+                    text: "Are you looking for a service?",
                     buttonEnum: ButtonEnum.secondary,
-                    action: () {},
+                    action: () => context.go('/booking/customer-booking'),
                   ),
                   Text(
                     'Or',
@@ -64,9 +64,9 @@ class _IdentificationScreenState extends State<IdentificationScreen> {
                     ),
                   ),
                   CustomButton(
-                    text: 'Do you want to work?',
+                    text: 'Do you want to offer services?',
                     buttonEnum: ButtonEnum.primary,
-                    action: () {},
+                    action: () => context.go('/services/profile'),
                   ),
                 ],
               ),
