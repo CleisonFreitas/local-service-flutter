@@ -10,7 +10,5 @@ class AppColors {
   static const Color inputText = Color(0xFFADB3BC);
   static const Color inativeText = Color.fromARGB(255, 179, 180, 181);
   static const Color error = Color.fromARGB(249, 203, 38, 38);
-  static const Gradient gradient = LinearGradient(
-    colors: <Color>[primary, secondary],
-  );
+  static const Color cardPrimary = Color(0xFFE1F5FA);
 }

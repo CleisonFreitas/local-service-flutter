@@ -10,6 +10,8 @@ LocalService+ is a Flutter-based mobile application that allows users to discove
 
 This app was developed to showcase a full range of production-ready skills, from GitFlow to native code manipulation in Kotlin and Swift.
 
+Figma model: https://www.figma.com/design/jQZzUGs0LTMAEZtpXtyv8l/-FREE--Beautilly---Salon---wellness-app-UI-kit--Community-?node-id=207-11308&m=draw
+
 ---
 
 ## 🧩 Features
