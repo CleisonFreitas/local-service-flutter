@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:local_services/blocs/base_state.dart';
 import 'package:local_services/core/constants/app_texts.dart';
+import 'package:local_services/features/auth/password_recovery/bloc/events/submit_email_recovery_event.dart';
+import 'package:local_services/features/auth/password_recovery/bloc/logic/email_recovery_logic.dart';
+import 'package:local_services/features/auth/password_recovery/bloc/state/email_recovery_state.dart';
+import 'package:local_services/features/auth/password_recovery/validations/email_recovery_validations.dart';
 import 'package:local_services/shared/components/content_container.dart';
 import 'package:local_services/shared/components/custom_button.dart';
 import 'package:local_services/shared/components/custom_form_field.dart';
@@ -19,6 +24,7 @@ class _EmailRecoveryScreenState extends State<EmailRecoveryScreen> {
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
   late final ValueNotifier<bool> _usePhoneFieldNotifier;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -31,6 +37,7 @@ class _EmailRecoveryScreenState extends State<EmailRecoveryScreen> {
     _emailController.dispose();
     _phoneController.dispose();
     _usePhoneFieldNotifier.dispose();
+    _formKey.currentState?.dispose();
     super.dispose();
   }
 
@@ -43,6 +50,14 @@ class _EmailRecoveryScreenState extends State<EmailRecoveryScreen> {
 
     if (_phoneController.text.isNotEmpty) {
       _phoneController.text = '';
+    }
+  }
+
+  Future<void> _sendForm() async {
+    if (_formKey.currentState?.validate() ?? false) {
+      context.read<EmailRecoveryLogic>().add(
+        SubmitEmailRecoveryEvent(email: _emailController.text),
+      );
     }
   }
 
@@ -65,38 +80,49 @@ class _EmailRecoveryScreenState extends State<EmailRecoveryScreen> {
             ValueListenableBuilder(
               valueListenable: _usePhoneFieldNotifier,
               builder: (context, state, child) {
-                return Column(
-                  children: <Widget>[
-                    CustomFormField(
-                      controller: state ? _phoneController : _emailController,
-                      label: state ? 'Mobile number' : 'Email address',
-                      prefixIcon: state ? Icons.phone : Icons.mail,
-                      keyboardType:
-                          state
-                              ? TextInputType.phone
-                              : TextInputType.emailAddress,
-                    ),
-                    const SizedBox(height: 2),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: InkWell(
-                        onTap: _changeRecoveryMethod,
-                        child: Text(
-                          state ? 'Use email address?' : 'Use phone number?',
-                          style: AppTexts.subtitle1.primary,
+                return Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      CustomFormField(
+                        controller: state ? _phoneController : _emailController,
+                        label: state ? 'Mobile number' : 'Email address',
+                        prefixIcon: state ? Icons.phone : Icons.mail,
+                        keyboardType:
+                            state
+                                ? TextInputType.phone
+                                : TextInputType.emailAddress,
+                        validator: (value) {
+                          final result = validateEmailRecoveryField(
+                            value ?? '',
+                          );
+                          return result['firstError'];
+                        },
+                      ),
+                      const SizedBox(height: 2),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: InkWell(
+                          onTap: _changeRecoveryMethod,
+                          child: Text(
+                            state ? 'Use email address?' : 'Use phone number?',
+                            style: AppTexts.subtitle1.primary,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 93),
-                    CustomButton(
-                      text: 'Send Code',
-                      buttonEnum: ButtonEnum.secondary,
-                      action:
-                          () => context.go(
-                            '/auth/password-recovery/recovery-otp-email',
-                          ),
-                    ),
-                  ],
+                      const SizedBox(height: 93),
+                      BlocBuilder<EmailRecoveryLogic, BaseState>(
+                        builder: (context, state) {
+                          return CustomButton(
+                            text: 'Send Code',
+                            buttonEnum: ButtonEnum.secondary,
+                            action: _sendForm,
+                            isLoading: state is EmailRecoveryLoading,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
