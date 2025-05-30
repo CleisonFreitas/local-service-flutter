@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:local_services/blocs/base_state.dart';
 import 'package:local_services/blocs/generic_bloc_listener.dart';
 import 'package:local_services/features/auth/identification/identification_screen.dart';
+import 'package:local_services/features/auth/password_recovery/bloc/logic/email_recovery_logic.dart';
 import 'package:local_services/features/auth/password_recovery/email_otp_screen.dart';
 import 'package:local_services/features/auth/password_recovery/email_recovery_screen.dart';
 import 'package:local_services/features/auth/password_recovery/new_password_screen.dart';
@@ -39,7 +40,16 @@ final routerConfig = GoRouter(
     ),
     GoRoute(
       path: '/auth/password-recovery/recovery-password-email',
-      builder: (context, state) => const EmailRecoveryScreen(),
+      builder:
+          (context, state) => BlocProvider(
+            create: (_) => EmailRecoveryLogic(),
+            child: GenericBlocListener<EmailRecoveryLogic, BaseState>(
+              child: const EmailRecoveryScreen(),
+              onSuccess: (context, _) {
+                context.go('/auth/password-recovery/recovery-otp-email');
+              },
+            ),
+          ),
     ),
     GoRoute(
       path: '/auth/password-recovery/recovery-otp-email',
