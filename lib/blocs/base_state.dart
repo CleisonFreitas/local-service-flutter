@@ -9,6 +9,11 @@ class BaseSuccess extends BaseState {
   BaseSuccess(this.message);
 }
 
+class BaseLoaded extends BaseState {
+  final dynamic object;
+  BaseLoaded(this.object);
+}
+
 class BaseFailure extends BaseState {
   final String message;
   BaseFailure(this.message);
