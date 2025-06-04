@@ -19,28 +19,42 @@ class CustomProfessionalCard {
       builder: (bottomSheetContext) {
         final bloc = context.read<ProfileFormBloc>();
         return SizedBox(
-          height: 700,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: BlocProvider.value(
-              value: bloc,
-              child: BlocBuilder<ProfileFormBloc, BaseState>(
-                builder: (context, state) {
-                  if (state is ProfileFormLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primary,
-                      ),
-                    );
-                  }
+          height: 650,
+          child: BlocProvider.value(
+            value: bloc,
+            child: BlocBuilder<ProfileFormBloc, BaseState>(
+              builder: (context, state) {
+                if (state is ProfileFormLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(color: AppColors.primary),
+                  );
+                }
 
-                  if (state is ProfileFormLoaded) {
-                    final profile = state.profile;
-                    return Column(
+                if (state is ProfileFormLoaded) {
+                  final profile = state.profile;
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+                    ),
+                    child: Column(
                       children: <Widget>[
-                        Image.asset(
-                          profile.urlImage ?? '',
+                        Container(
+                          height: 250,
                           width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(28),
+                              topLeft: Radius.circular(28),
+                            ),
+                            border: Border.all(color: AppColors.inativeText),
+                            image: DecorationImage(
+                              image: AssetImage(profile.urlImage!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -62,15 +76,15 @@ class CustomProfessionalCard {
                           ),
                         ),
                       ],
-                    );
-                  }
+                    ),
+                  );
+                }
 
-                  if (state is ProfileFormError) {
-                    return Center(child: Text(state.message));
-                  }
-                  return const SizedBox(); // fallback for initial state
-                },
-              ),
+                if (state is ProfileFormError) {
+                  return Center(child: Text(state.message));
+                }
+                return const SizedBox(); // fallback for initial state
+              },
             ),
           ),
         );

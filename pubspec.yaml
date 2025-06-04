@@ -82,8 +82,10 @@ flutter:
     - assets/images/banner_1.png
     - assets/images/banner_2.png
     - assets/images/banner_3.png
-    - assets/images/workers/man_1.jpg
-    - assets/images/workers/man_2.jpg
-    - assets/images/workers/woman.jpg
-    - assets/images/workers/woman_2.jpg
-    - assets/images/workers/worker-image.webp
+    - assets/images/workers/ana-costa-profile.jpeg
+    - assets/images/workers/julia-mendes-profile.jpeg
+    - assets/images/workers/lucas-silva-profile.jpeg
+    - assets/images/workers/rafael-oliveira-profile.jpeg
+    - assets/images/workers/carla-ribeira-profile.jpeg
+    - assets/images/workers/felipe-lima-profile.jpeg
+    - assets/images/workers/mariana-duarte-profile.jpeg

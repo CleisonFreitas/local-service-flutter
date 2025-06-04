@@ -7,20 +7,23 @@ List<Profile> profileList = [
     bio: 'Experienced hair stylist and color expert.',
     skills: 'Haircut, Color, Styling',
     servicesAmount: 45,
+    urlImage: 'assets/images/workers/julia-mendes-profile.jpeg',
   ),
   Profile(
     id: 2,
-    name: 'Lucas Silva',
+    name: 'Ana Costa',
     bio: 'Professional photographer specialized in portraits.',
     skills: 'Photography, Editing, Lighting',
     servicesAmount: 22,
+    urlImage: 'assets/images/workers/ana-costa-profile.jpeg',
   ),
   Profile(
     id: 3,
-    name: 'Ana Costa',
+    name: 'Lucas Silva',
     bio: 'Nail artist with creative and elegant designs.',
     skills: 'Manicure, Pedicure, Nail Art',
     servicesAmount: 30,
+    urlImage: 'assets/images/workers/lucas-silva-profile.jpeg',
   ),
   Profile(
     id: 4,
@@ -28,6 +31,7 @@ List<Profile> profileList = [
     bio: 'Certified personal trainer and fitness coach.',
     skills: 'Fitness, Nutrition, Training Plans',
     servicesAmount: 18,
+    urlImage: 'assets/images/workers/rafael-oliveira-profile.jpeg',
   ),
   Profile(
     id: 5,
@@ -35,6 +39,7 @@ List<Profile> profileList = [
     bio: 'Licensed massage therapist for deep relaxation.',
     skills: 'Massage, Aromatherapy, Reflexology',
     servicesAmount: 27,
+    urlImage: 'assets/images/workers/carla-ribeira-profile.jpeg',
   ),
   Profile(
     id: 6,
@@ -42,6 +47,7 @@ List<Profile> profileList = [
     bio: 'Tech-savvy handyman for home repairs and upgrades.',
     skills: 'Electrical, Plumbing, Assembly',
     servicesAmount: 12,
+    urlImage: 'assets/images/workers/felipe-lima-profile.jpeg',
   ),
   Profile(
     id: 7,
@@ -49,5 +55,6 @@ List<Profile> profileList = [
     bio: 'Professional makeup artist for events and weddings.',
     skills: 'Makeup, Skin Prep, Lashes',
     servicesAmount: 40,
+    urlImage: 'assets/images/workers/mariana-duarte-profile.jpeg',
   ),
 ];
