@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_services/core/constants/app_texts.dart';
+import 'package:local_services/features/services/data/profile_list.dart';
 import 'package:local_services/shared/components/card_service.dart';
 import 'package:local_services/shared/components/card_worker.dart';
 import 'package:local_services/shared/components/custom_banner_slider.dart';
@@ -90,23 +91,12 @@ class BookingHome extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: 10,
-                  children: <Widget>[
-                    CardWorker(image: 'assets/images/workers/man_1.jpg', id: 1),
-                    CardWorker(image: 'assets/images/workers/woman.jpg', id: 2),
-                    CardWorker(image: 'assets/images/workers/man_2.jpg', id: 3),
-                    CardWorker(
-                      image: 'assets/images/workers/woman_2.jpg',
-                      id: 4,
-                    ),
-                    CardWorker(image: 'assets/images/workers/woman.jpg', id: 5),
-                    CardWorker(image: 'assets/images/workers/man_1.jpg', id: 6),
-                    CardWorker(image: 'assets/images/workers/man_2.jpg', id: 7),
-                    CardWorker(image: 'assets/images/workers/woman.jpg', id: 8),
-                    CardWorker(
-                      image: 'assets/images/workers/woman_2.jpg',
-                      id: 9,
-                    ),
-                  ],
+                  children: List.generate(profileList.length, (index) {
+                    return CardWorker(
+                      image: profileList[index].urlImage!,
+                      id: profileList[index].id!,
+                    );
+                  }),
                 ),
               ),
             ],
