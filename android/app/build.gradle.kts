@@ -1,3 +1,7 @@
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+def mapsApiKey = localProperties['GOOGLE_MAPS_API_KEY']
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -28,6 +32,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders = [ googleMapsApiKey: mapsApiKey ]
     }
 
     buildTypes {
